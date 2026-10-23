@@ -53,7 +53,7 @@ Merge P01 before Payload-specific B02 integration. Merge B01 only after the rele
 
 ## First integration gate
 
-After P01, the minimum B01 Project/Media interface, B02, M01 and a protected staging environment are ready, complete one real project slice (TemperLink is the specified sample):
+After P01, accepted B01 fields, B02, B03, P03, F03, M01, M02/M03 and protected staging are ready, complete one real project slice (TemperLink is the specified sample):
 
 - import is a dry run by default and does not overwrite later editor changes;
 - an Editor saves a draft, an authorized preview shows it, and the live version remains unchanged;
