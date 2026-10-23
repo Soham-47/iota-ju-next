@@ -1,12 +1,14 @@
 # IOTA JU website redesign
 
-This is the separate local Git repository for planning and implementing the redesigned IOTA JU website. The redesign is planned as a Next.js App Router and Payload CMS application. The public site, CMS admin, authentication and content APIs will run in one Vercel project. PostgreSQL and object storage will be separate managed services.
+This is the separate GitHub repository for planning and implementing the redesigned IOTA JU website: [Soham-47/iota-ju-next](https://github.com/Soham-47/iota-ju-next). The redesign is planned as a Next.js App Router and Payload CMS application. The public site, CMS admin, authentication and content APIs will run in one Vercel project. PostgreSQL and object storage will be separate managed services.
 
 ## Current state
 
-This repository currently contains the team handbooks and architecture decisions. The application has **not** been scaffolded yet. Sourasish owns the initial app scaffold. No GitHub remote, paid provider, production resource or production domain has been configured.
+The shared `main` branch currently contains the team handbooks and architecture decisions; the application scaffold has **not** merged. PR #2 proposes P01/P02 but is not complete yet. Sourasish owns the platform foundation. The GitHub remote is established; paid providers, production resources and the public domain are still unconfigured and require approval.
 
 ## Read the right guide
+
+- [Coordination plan](docs/coordination-plan.md): start-now work, true dependencies, PR order and team sync.
 
 - [Orchestrator guide (PDF)](docs/assignments/orchestrator-guide.pdf) · [LaTeX source](main.tex): decisions, team coordination, phase gates, integration and release ownership.
 - [Sourasish: platform and release integration (PDF)](docs/assignments/sourasish.pdf) · [LaTeX source](docs/assignments/sourasish.tex)
@@ -31,7 +33,7 @@ PDF handbooks are ready to read above; each editable source is a standalone LaTe
 
 ## Start implementation
 
-1. The orchestrator records the remote-repository decision, confirms Vercel/database/storage ownership and budget, and assigns the first phase.
-2. Sourasish creates the application foundation in this repository while retaining the existing docs/ and main.tex.
-3. The members work from their task IDs and file ownership tables. Each PR includes its checks and a staging demonstration when relevant.
-4. Do not switch the public domain until the orchestrator approves the release gate.
+1. The orchestrator confirms each member's GitHub login, records the source commit being inventoried, and assigns the current task IDs.
+2. Sourasish completes the reproducible app foundation; Shreyam starts the source inventory in parallel; Ritendu drafts the contract and fixes pure permission logic while marking source-dependent fields pending.
+3. Members work from their handbooks and the coordination plan. Each PR states its task ID, owner, dependencies, checks, evidence and remaining blockers.
+4. Approve Vercel/database/storage ownership and budget before provisioning. Do not switch the public domain until the orchestrator approves the release gate.
