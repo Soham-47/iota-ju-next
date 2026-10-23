@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.72in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\urlstyle{same}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=2pt}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=3pt,topsep=3pt}
+\newcommand{\pathfile}[1]{\path{#1}}
+\begin{document}
+\title{IOTA JU Website Redesign\\Next Steps for Shreyam}
+\author{Plain task handout}
+\date{24 October 2026}
+\maketitle
+
+\section{Your next task}
+
+Start M01: list the content, pages, links and media in the existing public website. This can happen while Sourasish builds the new app and Ritendu fixes the CMS rules. You do not need the new app for M01.
+
+First ask the orchestrator which exact old-site commit to inspect. Record that commit in your report. If the source changed since the planning notes, say so and record the newer commit you used.
+
+\section{What to list}
+
+Create two files:
+
+\begin{itemize}
+\item \pathfile{docs/source-inventory.md}: a report people can read.
+\item A machine-readable manifest for later import and checks.
+\end{itemize}
+
+For every public page, detail page and old public URL, record its old path, what it contains, and what should happen to it: migrate, redirect, keep on the old site or exclude.
+
+For every image, video, PDF and external embed, record:
+
+\begin{itemize}
+\item Exact old path and file-name case.
+\item Which page or feature uses it.
+\item File type and size.
+\item A checksum so the original can be checked later.
+\item Any missing file or uncertain use.
+\end{itemize}
+
+Also list questions about names, identity matches, dates, departments, links or content that the source does not answer. Name the owner who should answer each one.
+
+\section{Important rules}
+
+\begin{itemize}
+\item Do not merge people just because their names match.
+\item Do not invent a date, role, award, link or relationship.
+\item Keep the original media unchanged. Do not commit large media files to the new repository.
+\item Mark the workshop Q\&A as outside the new site. Do not delete the old service or its data.
+\item Do not upload files to paid storage before the orchestrator approves the provider and budget.
+\end{itemize}
+
+\section{How to check the inventory}
+
+Run the inventory twice against the same source commit. The output should be the same both times. Manually trace at least one page or item from each public section, plus the linked AGV and project history pages.
+
+If you cannot confirm something, mark it for review instead of guessing. The inventory is still useful if it lists clear questions and missing files.
+
+\section{How to finish}
+
+Open a focused M01 PR with:
+
+\begin{itemize}
+\item The exact old-site repository and commit inspected.
+\item The report and manifest.
+\item The checks you ran and their real results.
+\item Unanswered questions, with the person who should answer each.
+\item Anything you could not inspect.
+\end{itemize}
+
+After M01, you can start M03: prepare smaller image and video delivery copies while keeping the originals. M02 storage work waits for the approved provider, budget, app base and agreed Media fields. M04 import work waits for the Project fields and a safe staging environment.
+
+\section{Copy-ready coding agent task}
+
+\begin{verbatim}
+Work on M01 for the IOTA JU website redesign. Read README.md,
+docs/coordination-plan.md and the Shreyam handbook first.
+
+Ask the orchestrator for the exact old-site source commit, then inspect it.
+Do not change or delete the old website.
+
+Create docs/source-inventory.md and a machine-readable manifest. List all
+public pages, detail pages, old URLs, text blocks, images, videos, PDFs and
+external embeds. Record each old path, exact file-name case, page use, type
+and size. Record a checksum for each media file. Mark each item migrate,
+redirect, keep on the old site or exclude, with a reason.
+
+Flag uncertain names, identities, dates, departments, links and missing files.
+Do not guess or merge same-name people. Exclude workshop Q&A from the new app,
+but do not delete its old service or data. Do not commit large media files or
+upload them to paid storage.
+
+Run the inventory twice against the same source commit and compare results.
+Manually check one item from each public section plus linked AGV/history pages.
+Report the source commit, files, checks and real results, open questions and
+blockers. Open a focused M01 PR and stop before M02 or M04.
+\end{verbatim}
+
+\end{document}

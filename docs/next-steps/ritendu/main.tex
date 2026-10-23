@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.72in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\urlstyle{same}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=2pt}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=3pt,topsep=3pt}
+\newcommand{\pathfile}[1]{\path{#1}}
+\begin{document}
+\title{IOTA JU Website Redesign\\Next Steps for Ritendu}
+\author{Plain task handout}
+\date{24 October 2026}
+\maketitle
+
+\section{Your next task}
+
+Fix the permission problems in PR \#1 and keep the content contract marked DRAFT. Your work can start before the app is built, but Payload-specific checks must wait for Sourasish's P01 foundation.
+
+PR \#1 changes the content contract, access rules and tests. It is not ready to merge yet. The current rules let an Editor change their own email or other fields, and the last Admin check is not safe when two changes happen at once.
+
+\section{Fix the Editor rule}
+
+Editors should be able to change their own approved display name. They must not be able to change their email, role or active status. Password changes must use the approved password reset flow.
+
+Use an explicit list of allowed fields. Do not use a rule that allows every field except role and active.
+
+Add focused tests for these cases:
+
+\begin{itemize}
+\item An Editor can change their own approved display name.
+\item An Editor cannot change their email, role or active status.
+\item An Editor cannot change another person's account.
+\item An inactive account cannot write.
+\end{itemize}
+
+\section{Protect the last Admin}
+
+The system must always keep at least one active Admin. A count followed by a separate save is not enough. Two Admin requests could both see two Admins and remove each other at the same time.
+
+For now, make the limit clear in the policy and write down the required Payload integration step. When P01 is merged, protect the count and account change together in the Payload operation, then add an integration test for two Admin changes happening at once.
+
+Do not say this is fully safe until the Payload-side check protects the actual write.
+
+\section{Keep B01 as a draft}
+
+The content contract depends on facts from Shreyam's M01 source inventory. Keep it labelled DRAFT. Mark source-dependent fields as pending and list each question with the person who can answer it.
+
+At minimum, keep these ideas clear:
+
+\begin{itemize}
+\item A stable source ID is different from a name or URL slug.
+\item Draft or published is different from ongoing or completed.
+\item Public fields are different from private CMS fields.
+\item Unknown dates or identities stay unknown until checked.
+\item Project order, reports, real links and media references must be preserved.
+\end{itemize}
+
+Ask Sourasish, Pritish and Shreyam to review the fields they use. Do not build B03 collections on a field that the owners have not agreed.
+
+\section{What to do about tests}
+
+There is no test setup on main yet. Do not claim the tests passed unless they actually ran.
+
+When P01 is merged:
+
+\begin{enumerate}
+\item Rebase this work on the new main branch.
+\item Run the focused permission tests.
+\item Add Payload integration tests for the Admin rule.
+\item Put the exact commands and results in the PR.
+\end{enumerate}
+
+Do not add root packages or edit Sourasish's shared setup.
+
+\section{How to finish}
+
+Keep PR \#1 limited to B01 and B02. If splitting the draft contract from the permission code makes review easier, ask the orchestrator before closing or replacing a PR.
+
+The PR must state what changed, which tests ran, which are still waiting for P01, and which B01 questions still need answers. Do not merge it until the Editor rule is fixed and the Admin protection has a safe integration plan.
+
+\section{Copy-ready coding agent task}
+
+\begin{verbatim}
+Work in Soham-47/iota-ju-next. Read README.md, docs/coordination-plan.md
+and the Ritendu handbook. Inspect PR #1 and its latest commit first.
+
+Fix B02: let Editors change only their own approved display name. Deny
+changes to email, role, active status and another user's account. Use an
+explicit allowlist and add focused tests. Password changes use the approved
+account recovery flow.
+
+Keep B01 marked DRAFT until Shreyam's source inventory and the other owners
+review it. List unanswered source questions and their owners. Keep stable IDs,
+slugs, display order, publication state and project/event lifecycle separate.
+Do not guess missing dates, people or links.
+
+The last active Admin must remain active even if two requests happen at once.
+A count followed by a separate save is not enough. Write down the Payload
+integration needed, and add the integration protection and test after P01.
+Do not claim this is safe until that check protects the real write.
+
+Do not edit root packages or begin B03. Do not claim tests passed if they
+cannot run. Report files, exact checks, results, pending questions and blockers.
+\end{verbatim}
+
+\end{document}

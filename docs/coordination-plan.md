@@ -2,6 +2,13 @@
 
 This page says what is ready, what each person can do now, and what to give a coding agent. It is written for the IOTA JU redesign team.
 
+For your immediate task, start with one of these short handouts:
+
+- [Sourasish: app foundation (PDF)](docs/next-steps/sourasish/main.pdf) · [LaTeX source](docs/next-steps/sourasish/main.tex)
+- [Ritendu: CMS and permissions (PDF)](docs/next-steps/ritendu/main.pdf) · [LaTeX source](docs/next-steps/ritendu/main.tex)
+- [Shreyam: old-site inventory (PDF)](docs/next-steps/shreyam/main.pdf) · [LaTeX source](docs/next-steps/shreyam/main.tex)
+- [Pritish: frontend timing (PDF)](docs/next-steps/pritish/main.pdf) · [LaTeX source](docs/next-steps/pritish/main.tex)
+
 Read your task handbook before coding:
 
 - [Orchestrator guide](../main.tex)
