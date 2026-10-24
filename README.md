@@ -4,6 +4,7 @@ This repository holds the plan and code for the new IOTA JU website. The old web
 
 ## Current status
 
+This repository contains the team handbooks and the initial Next.js App Router and Payload CMS scaffold, environment validation, and CI quality workflow. No paid provider, production resource or production domain has been configured.
 The main branch has the project handbooks and planning files. The app has not been added to main yet. PR #1 and PR #2 need changes before they can be merged. See the [team work guide](docs/coordination-plan.md) for the current status and the next steps.
 
 ## Start here
@@ -28,4 +29,12 @@ The main branch has the project handbooks and planning files. The app has not be
 
 Sourasish can build the app foundation, Ritendu can fix the content and permission rules, and Shreyam can inventory the old website at the same time. Pritish can start page work after the app and the content fields are ready.
 
+PDF handbooks are ready to read above; each editable source is a standalone LaTeX file. The handbooks use a plain black-and-white article layout with no custom images or color theme. To rebuild them locally, use a LaTeX distribution with the standard packages listed in each file's preamble, then run pdflatex on the selected source.
+
+## Start implementation
+
+1. The orchestrator records the remote-repository decision, confirms Vercel/database/storage ownership and budget, and assigns the first phase.
+2. Extend the application foundation while retaining the existing docs/ and main.tex.
+3. The members work from their task IDs and file ownership tables. Each PR includes its checks and a staging demonstration when relevant.
+4. Do not switch the public domain until the orchestrator approves the release gate.
 Read the team work guide before starting.
