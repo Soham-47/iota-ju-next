@@ -8,6 +8,15 @@ The main branch has the project handbooks and planning files. The app has not be
 
 ## Start here
 
+Immediate next steps (24 October 2026):
+
+- [Sourasish: app foundation (PDF)](docs/next-steps/sourasish/sourasish-next-steps.pdf) · [LaTeX source](docs/next-steps/sourasish/main.tex)
+- [Ritendu: CMS and permissions (PDF)](docs/next-steps/ritendu/ritendu-next-steps.pdf) · [LaTeX source](docs/next-steps/ritendu/main.tex)
+- [Shreyam: old-site inventory (PDF)](docs/next-steps/shreyam/shreyam-next-steps.pdf) · [LaTeX source](docs/next-steps/shreyam/main.tex)
+- [Pritish: frontend timing (PDF)](docs/next-steps/pritish/pritish-next-steps.pdf) · [LaTeX source](docs/next-steps/pritish/main.tex)
+
+Read the team guide and your handbook before starting.
+
 - [Team work guide](docs/coordination-plan.md): who can work now, what depends on what, copy-ready instructions for coding agents, and how to review PRs.
 - [Orchestrator guide](main.tex): decisions, team roles and release steps.
 - [Sourasish handbook](docs/assignments/sourasish.pdf) · [editable copy](docs/assignments/sourasish.tex)

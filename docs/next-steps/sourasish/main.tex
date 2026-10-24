@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.72in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\urlstyle{same}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=2pt}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=3pt,topsep=3pt}
+\newcommand{\pathfile}[1]{\path{#1}}
+\begin{document}
+\title{IOTA JU Website Redesign\\Next Steps for Sourasish}
+\author{Plain task handout}
+\date{24 October 2026}
+\maketitle
+
+\section{Your next task}
+
+Finish P01: make the first working app foundation. The shared GitHub repository has the handbooks, but the app foundation is not on main yet.
+
+PR \#2 says it completes P01 and P02. The current PR only changes five files: \pathfile{.env.example}, \pathfile{next-env.d.ts}, \pathfile{package.json}, \pathfile{pnpm-lock.yaml} and \pathfile{tsconfig.tsbuildinfo}. The app routes, Payload setup, environment check, test setup, CI workflow and environment guide are not in the PR.
+
+The PR author is shown as \texttt{A-spark-of-fire}. The PR says this is your work. Please confirm that account is yours. If you have more work on your computer, share the branch name and latest commit so the team can review it.
+
+\section{What to do now}
+
+Work on P01 first. You do not need final page design, agreed content fields, a cloud account or paid hosting to do P01.
+
+\begin{enumerate}
+\item Start from the latest main branch. Keep the existing README, handbooks, \pathfile{main.tex} and Git history.
+\item Set up one working Next.js app with Payload CMS and the PostgreSQL adapter.
+\item Add the Payload admin/API routes and the first Payload configuration.
+\item Pin a supported Node version and compatible package versions. Keep the package file and lockfile in sync.
+\item Add server-side environment checks and a safe \pathfile{.env.example}. Do not add real passwords or keys.
+\item Add the app scripts and test setup. Every script must have the package it needs.
+\item Remove generated build files such as \pathfile{tsconfig.tsbuildinfo}. Add ignore rules if needed.
+\item Check the selected versions against the official setup instructions. Write down the versions in the environment guide.
+\end{enumerate}
+
+\section{What belongs in P01}
+
+Use your handbook for the full file list. At minimum, P01 needs:
+
+\begin{itemize}
+\item The root package file, lockfile, Node version file and app configuration.
+\item \pathfile{src/app/(payload)/} with the Payload route files.
+\item \pathfile{src/payload.config.ts} and \pathfile{src/env.ts}.
+\item \pathfile{.env.example}, the test configuration and an environment validation test.
+\item Working scripts for development, build, start, lint, type check, tests and Payload commands.
+\end{itemize}
+
+Do not build public pages in this task. Pritish owns those pages. Do not start a second API server.
+
+\section{How to check the work}
+
+Ask another person to start from a fresh clone. Have them run:
+
+\begin{verbatim}
+pnpm install --frozen-lockfile
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
+\end{verbatim}
+
+All commands that are listed must exist and pass. If a command cannot run, write the reason and leave it marked as not checked. Do not report a test or build as passed unless it actually ran.
+
+\section{How to finish}
+
+Open a focused P01 PR. It should say:
+
+\begin{itemize}
+\item Task ID: P01.
+\item What files changed.
+\item Node and package versions selected.
+\item The exact commands run and their results.
+\item Anything still missing or blocked.
+\end{itemize}
+
+Do not mark the current PR complete just because GitHub says it is mergeable. That only means Git can combine it with main.
+
+\section{After P01}
+
+After P01 is reviewed and merged, add P02 in a follow-up: GitHub CI and the environment guide. CI does not need a cloud account. Ask the orchestrator to approve the owner and budget before creating any paid staging service.
+
+\section{Copy-ready coding agent task}
+
+\begin{verbatim}
+Work in Soham-47/iota-ju-next. Read README.md, docs/coordination-plan.md
+and the Sourasish handbook before editing.
+
+Do P01 only: make the smallest complete Next.js and Payload app foundation.
+Start from current main and keep all existing handbooks and planning files.
+Pin compatible versions, add the Payload routes/config, server environment
+check, safe .env.example, lockfile, honest scripts and test setup.
+
+Do not build public pages, choose a provider, create paid services, add a
+second backend, commit secrets or commit generated build output.
+
+Check the official setup instructions for version compatibility. From a
+fresh clone, run the documented install, lint, type check, tests and build.
+Report the exact result of each command. Open a focused P01 PR and stop.
+Do not call P02 complete until its CI workflow and environment guide exist.
+\end{verbatim}
+
+\end{document}
