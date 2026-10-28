@@ -1,0 +1,472 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Refresh pnpm lockfile",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"install",
+				"--no-frozen-lockfile"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify frozen pnpm install",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"install",
+				"--frozen-lockfile"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run typecheck",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"typecheck"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run lint",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"lint"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run production build",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Align Next.js 15 dependencies",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"add",
+				"next@15",
+				"eslint-config-next@15"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Recheck frozen install",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"install",
+				"--frozen-lockfile"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Recheck typecheck",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"typecheck"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Recheck lint",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"lint"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Recheck production build",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect git status",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Untrack TypeScript cache",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"rm",
+				"--cached",
+				"-f",
+				"tsconfig.tsbuildinfo"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stage config changes",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"add",
+				".gitignore",
+				"package.json",
+				"pnpm-lock.yaml",
+				"eslint.config.mjs",
+				"pnpm-workspace.yaml"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify final git status",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify staged diff whitespace",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"diff",
+				"--cached",
+				"--check"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Summarize staged changes",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"diff",
+				"--cached",
+				"--stat"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Confirm cache is ignored",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"check-ignore",
+				"-v",
+				"tsconfig.tsbuildinfo"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify cache untracked",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"ls-files",
+				"tsconfig.tsbuildinfo"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install pnpm dependencies",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"install",
+				"--no-frozen-lockfile"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install dependencies (no frozen lockfile)",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"install",
+				"--no-frozen-lockfile"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "pnpm install frozen-lockfile",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"install",
+				"--frozen-lockfile"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "pnpm typecheck",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"typecheck"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "pnpm lint",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"lint"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "pnpm test",
+			"type": "shell",
+			"command": "pnpm test",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build scaffold",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect final git status",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Git author configuration",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"config",
+				"user.name"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Git author email",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"config",
+				"user.email"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check remote divergence",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"-sb"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stage P01 P02 scaffold",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"add",
+				"."
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Review staged status",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check staged formatting",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"diff",
+				"--cached",
+				"--check"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check generated files ignored",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"check-ignore",
+				"-v",
+				"tsconfig.tsbuildinfo",
+				".next/trace"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check generated cache tracking",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"ls-files",
+				"tsconfig.tsbuildinfo"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "View staged summary",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"diff",
+				"--cached",
+				"--stat"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit restored scaffold",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"commit",
+				"-m",
+				"fix(p01-p02): add complete app scaffold, tsconfig, env validator, and quality workflow",
+				"-m",
+				"Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Push scaffold to PR branch",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"push",
+				"origin",
+				"feat/p01-p02"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Confirm clean worktree",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"-sb"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Temporary explicit test-script check",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"run",
+				"test"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install updated dependencies",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"install"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify conflict resolution",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short",
+				"--branch"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stage merge resolution",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"add",
+				"."
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

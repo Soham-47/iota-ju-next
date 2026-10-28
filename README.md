@@ -1,31 +1,44 @@
-# IOTA JU new website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-This repository holds the plan and code for the new IOTA JU website. The old website stays available until the new one is ready.
+## Getting Started
 
-## Current status
+First, run the development server:
 
-The main branch has the project handbooks and planning files. The app has not been added to main yet. PR #1 and PR #2 need changes before they can be merged. See the [team work guide](docs/coordination-plan.md) for the current status and the next steps.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Start here
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- [Team work guide](docs/coordination-plan.md): who can work now, what depends on what, copy-ready instructions for coding agents, and how to review PRs.
-- [Orchestrator guide](main.tex): decisions, team roles and release steps.
-- [Sourasish handbook](docs/assignments/sourasish.pdf) · [editable copy](docs/assignments/sourasish.tex)
-- [Ritendu handbook](docs/assignments/ritendu.pdf) · [editable copy](docs/assignments/ritendu.tex)
-- [Pritish handbook](docs/assignments/pritish.pdf) · [editable copy](docs/assignments/pritish.tex)
-- [Shreyam handbook](docs/assignments/shreyam.pdf) · [editable copy](docs/assignments/shreyam.tex)
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Main project choices
+## End-to-end testing
 
-- The new site will use Next.js and Payload CMS in one app. Payload is the admin tool for editing site content.
-- PostgreSQL stores the content. Object storage and a CDN serve large files such as images and videos.
-- Keep the old website available so the team can roll back if needed.
-- Do not move workshop Q&A data or code into the new app. Do not delete the old Q&A service or data.
-- Do not create paid hosting, database or storage accounts until the orchestrator approves the owner and budget.
-- Do not move the public domain until the orchestrator approves the release.
+Install the Playwright browser dependencies before running the end-to-end tests:
 
-## Start work
+```bash
+pnpm test:e2e:install
+```
 
-Sourasish can build the app foundation, Ritendu can fix the content and permission rules, and Shreyam can inventory the old website at the same time. Pritish can start page work after the app and the content fields are ready.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Read the team work guide before starting.
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
