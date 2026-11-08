@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.72in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\urlstyle{same}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=2pt}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=3pt,topsep=3pt}
+\newcommand{\pathfile}[1]{\path{#1}}
+\begin{document}
+\title{IOTA JU Website Redesign\\Next Steps for Shreyam}
+\author{Plain task handout}
+\date{24 October 2026}
+\maketitle
+
+\section{Your next task}
+
+Continue M01 and update PR \#5. Your first inventory is a useful start, but it is not ready to merge or call complete yet. It lists 27 pages and 168 media files, and it also finds 14 external items.
+
+The source commit in your PR, \pathfile{edfc713c0761bc4ff3cf42e29631082628fe9abc}, exists in the old website repository: \url{https://github.com/Soham-47/iota-ju}. Keep that commit fixed while checking this inventory. Record the repository, commit, and exact command used to serve the local site.
+
+\section{What to list}
+
+Create two files:
+
+\begin{itemize}
+\item \pathfile{docs/source-inventory.md}: a report people can read.
+\item A machine-readable manifest for later import and checks.
+\end{itemize}
+
+For every public page, detail page and old public URL, record its old path, what it contains, and what should happen to it: migrate, redirect, keep on the old site or exclude.
+
+For every image, video, PDF and external embed, record:
+
+\begin{itemize}
+\item Exact old path and file-name case.
+\item Which page or feature uses it.
+\item File type and size.
+\item A checksum so the original can be checked later.
+\item Any missing file or uncertain use.
+\end{itemize}
+
+Also list questions about names, identity matches, dates, departments, links or content that the source does not answer. Name the owner who should answer each one.
+
+\newpage
+\section{Fix PR \#5}
+
+Please fix these items in the existing PR:
+
+\begin{enumerate}
+\item The report says all 14 external items are confirmed, but the manifest has no decision, reason, owner, or review status for them. Mark them as waiting for review and assign an owner. Only mark an item confirmed after its owner checks it.
+\item The script uses \texttt{pnpm\ tsx}, but the shared repository does not include or install \pathfile{tsx}. Make the command work from a fresh clone, and write down the exact command and result.
+\item If reading the old manifest or parsing its JSON fails, the script currently treats it like a first run. That can replace earlier review decisions. Ignore only a missing file. Stop on other read or parse errors, and save the new manifest safely.
+\item The report says \pathfile{localhost:4173}. Add the old repository link, the source commit, and the command you used to start that local copy. Do not use a changing live site and label it with an old commit.
+\end{enumerate}
+
+\section{Important rules}
+
+\begin{itemize}
+\item Do not merge people just because their names match.
+\item Do not invent a date, role, award, link or relationship.
+\item Keep the original media unchanged. Do not commit large media files to the new repository.
+\item Mark the workshop Q\&A as outside the new site. Do not delete the old service or its data.
+\item Do not upload files to paid storage before the orchestrator approves the provider and budget.
+\end{itemize}
+
+\section{How to check the inventory}
+
+Run the inventory twice against the same source commit. Compare the results and record the exact commands. Manually trace at least one page or item from each public section, plus the linked AGV and project history pages. Check that missing files and external links are reported. Review names, dates, statuses, and people's photos with the right owners.
+
+The unchecked manual review list in PR \#5 means M01 is still in progress. A report with zero crawler warnings does not prove that every item is correct. If you cannot confirm something, mark it for review instead of guessing.
+
+\section{How to finish}
+
+Update PR \#5 with:
+
+\begin{itemize}
+\item The old-site repository link and exact commit inspected.
+\item The report and manifest.
+\item The exact commands you ran and their real results, including the two-run comparison.
+\item The manual pages and files you checked.
+\item Unanswered questions, with the person who should answer each.
+\item Anything you could not inspect.
+\end{itemize}
+
+Keep M01 marked in progress until the report, manifest, repeat run, and manual checks agree. After M01, you can start M03: prepare smaller image and video copies while keeping the originals. M02 storage work waits for the approved provider, budget, app base, and agreed Media fields. M04 import work waits for the Project fields and a safe staging environment.
+
+\section{Copy-ready coding agent task}
+
+\begin{verbatim}
+Work on the current M01 task in PR #5 for the IOTA JU website redesign.
+Read README.md, docs/coordination-plan.md and this handout first. Inspect the
+latest PR commit before editing. Update PR #5; do not open a second M01 PR.
+
+Use the old website repository https://github.com/Soham-47/iota-ju at source
+commit edfc713c0761bc4ff3cf42e29631082628fe9abc. Keep that site read-only.
+Record the exact command used to check out the commit and serve the local copy.
+
+Fix the review comments in PR #5:
+- Mark all 14 external items as waiting for review unless an owner has really
+  confirmed them. Add the decision, reason, review status and owner.
+- Make the inventory command work from a fresh clone. The current command
+  uses `pnpm tsx`, but tsx is not installed or declared on main.
+- If an existing manifest cannot be read or parsed, stop without replacing
+  it. Only treat a missing manifest as a first run. Save safely.
+- Replace localhost-only source notes with the old repository link, exact
+  source commit, and the command used to serve that commit.
+
+Keep exact paths and file-name case, page use, type, size, and media checksum.
+Keep all migration choices proposed until their owners review them. Flag
+uncertain names, identities, dates, departments, links, and missing files.
+Do not guess or merge same-name people. Exclude workshop Q&A from the new app,
+but do not delete its old service or data. Do not copy large media into the new
+Git repository or upload it to paid storage.
+
+Run the inventory twice against the same source commit and compare results.
+Manually trace one item from every public section plus linked AGV and project
+history pages. Complete the manual review list, or leave each open item with
+its owner. Report the exact commands, real results, files, questions, and
+blockers. Keep M01 in progress until these checks are done. Stop before M02
+or M04.
+\end{verbatim}
+
+\end{document}
