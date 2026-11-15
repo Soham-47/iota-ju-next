@@ -194,3 +194,31 @@ Source: `docs/source-inventory.md` and `data/migration/source-manifest.json` fro
 | Pritish | 2–6 (public fields) | |
 | Shreyam | 2–5 and Media | |
 | Orchestrator | 7, 9 | |
+
+## 10. Review checklist (for sign-off in section 9)
+
+Reply per item with OK, a change request, or "not my area". Nothing here is agreed until the sign-off table is filled.
+
+**Sourasish (platform / readers)**
+- [ ] Section 1 rules 1, 5, 6: server-generated `stableKey`, readers return an explicit field allow-list, relationship depth bounded.
+- [ ] Section 8 publication event: payload shape (record type, ID, old/new slug, changed public relationships) and when to send it relative to the committed write.
+- [ ] Section 7 timezone rule is implementable in the readers.
+- [ ] Redirect runtime can consume exact old path, internal destination and status; `410` allowed? (question 6)
+- [ ] Config location (`src/payload.config.ts` vs root) (question 1).
+
+**Pritish (design / pages)**
+- [ ] For each page (home, about, projects, project detail, events, event detail, team, alumni, timeline): the public fields it needs are listed in sections 2 to 6, and no page needs a field that is not there.
+- [ ] Home/About/SiteSettings field list (section 6): content and references only, no custom HTML/CSS.
+- [ ] Navigation/footer and the official contact email come from one shared setting.
+
+**Shreyam (inventory / media)**
+- [ ] Sections 2 to 5 match the final M01 (questions 10, 11, 13); project and event slugs and legacy keys are correct.
+- [ ] Group list, duplicate-person candidates and portrait consent (question 12); same-name people kept separate.
+- [ ] Media reference fields (public delivery reference vs private master) match your Media contract.
+- [ ] Legacy aliases and Q&A exclusion are consistent with section 8a.
+
+**Orchestrator**
+- [ ] Timezone and "upcoming" rule (question 5), Redirect policy (question 7), publish rights and recovery email owner (question 8).
+
+Build rule: Ritendu builds a collection or field only after the relevant reviewers have signed off on it in section 9.
+

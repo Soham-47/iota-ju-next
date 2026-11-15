@@ -4,9 +4,9 @@ Last commit: (set after N0 commit)
 Status: IN PROGRESS
 
 ## Nodes
-N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U3 NOT RUN; U4 documented, concurrency test NOT RUN, rule NOT SAFE at Payload layer) | N2 IN PROGRESS (U1 DONE: existing PR #1 contract checked against handbook, DRAFT label, PENDING marks, sign-off table present; U2 DONE (reconciled vs draft PR #5 inventory; nothing Confirmed, PENDING marks kept); U3 PENDING) | N3 PENDING | N4 PENDING | N5 PENDING | N6 PENDING | N7 PENDING | N8 PENDING | N9 PENDING | N10 PENDING
+N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U3 NOT RUN; U4 documented, concurrency test NOT RUN, rule NOT SAFE at Payload layer) | N2 DONE (U1 DONE: existing PR #1 contract checked against handbook, DRAFT label, PENDING marks, sign-off table present; U2 DONE (reconciled vs draft PR #5 inventory; nothing Confirmed, PENDING marks kept); U3 DONE) | N3 to N8 BLOCKED (no B01 sign-off yet; fields still PENDING) except field-independent logic | N9 PENDING | N10 PENDING
 
-## NEXT UNIT: N2-U3
+## NEXT UNIT: N7-U1 (field-independent redirect validation logic + tests in src/hooks/redirectRules.ts; everything else waits for sign-off)
 
 ## Not run / unverified
 - Last-Admin atomic protection: policy doc'd (access-matrix.md section 7); NOT implemented at Payload layer; concurrency test written, NOT RUN
