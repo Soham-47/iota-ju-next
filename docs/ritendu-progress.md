@@ -1,12 +1,12 @@
 # Ritendu workstream progress
 Remote: https://github.com/sarkarritendu-creator/iota-ju-next.git   Branch: ritendu/cms-b01-b02   Updated: 2026-11-15
 Last commit: (set after N0 commit)
-Status: IN PROGRESS
+Status: STOPPED AT CHECKPOINT
 
 ## Nodes
-N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U3 NOT RUN; U4 documented, concurrency test NOT RUN, rule NOT SAFE at Payload layer) | N2 PENDING | N3 PENDING | N4 PENDING | N5 PENDING | N6 PENDING | N7 PENDING | N8 PENDING | N9 PENDING | N10 PENDING
+N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U3 NOT RUN; U4 documented, concurrency test NOT RUN, rule NOT SAFE at Payload layer) | N2 IN PROGRESS (U1 DONE: existing PR #1 contract checked against handbook, DRAFT label, PENDING marks, sign-off table present; U2 PENDING; U3 PENDING) | N3 PENDING | N4 PENDING | N5 PENDING | N6 PENDING | N7 PENDING | N8 PENDING | N9 PENDING | N10 PENDING
 
-## NEXT UNIT: N2-U1
+## NEXT UNIT: N2-U2
 
 ## Not run / unverified
 - Last-Admin atomic protection: policy doc'd (access-matrix.md section 7); NOT implemented at Payload layer; concurrency test written, NOT RUN
@@ -27,5 +27,7 @@ N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U
 - Shreyam: M01 source inventory before B01 PENDING fields can be resolved
 
 ## Notes / decisions
+- N2-U2 plan: reconcile every PENDING M01 field in docs/content-contract.md against Shreyam's docs/source-inventory.md (+ data/migration/source-manifest.json), available only on unmerged PR #5 (git ref pr5, fetch: git fetch https://github.com/Soham-47/iota-ju-next.git refs/pull/5/head:pr5). Treat it as DRAFT input, not agreed. Add open question #10: confirm PR #5 inventory is the final M01.
+- Local sandbox clone had no push access; work is saved as a git bundle + patches (see continuation prompt)
 - Branch based on main (d22b470); PR #1 files (policy.ts, access-policy test, access-matrix.md, content-contract.md) brought in from commit 0f19204 without its README/doc deletions (PR #1 was based on an older main)
 - PR #1 baseline: 36/36 policy tests pass
