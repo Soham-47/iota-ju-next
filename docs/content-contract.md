@@ -157,6 +157,19 @@ Sent only after the write has committed. Payload:
 
 `affected` lists the public relationships that must also refresh. Hook failures are logged visibly and retried by the receiver; they never silently succeed.
 
+## 8a. M01 reconciliation (N2-U2) — against Shreyam's DRAFT inventory
+
+Source: `docs/source-inventory.md` and `data/migration/source-manifest.json` from **unmerged PR #5** (source revision `edfc713`, crawled from a local copy). In that inventory **0 of 27 pages, 0 of 168 media files and 0 of 14 embeds are Confirmed**: everything is "Proposed (unconfirmed)" and the source lock is **unconfirmed**. So nothing below turns a `PENDING M01` field into an agreed field. This section only records what the draft inventory shows, so reviewers can check it.
+
+| Contract area | What the draft inventory shows | Effect on this contract |
+|---|---|---|
+| Project | 12 `/project/<slug>` detail pages: `autonomous-mobility`, `deskbot`, `drone`, `gamepad`, `ishara`, `mediguard`, `netralink`, `road-anomaly`, `smart-ebook-reader`, `spinsafe`, `temperlink`, `voxvision`; plus the `/projects` list page | Count matches "11 cards + AGV feature" = 12, but which page is the AGV feature and the card order are **not confirmed**. Order stays an explicit `sortOrder` set from the source, not from the crawl. `isAgvFeature` stays PENDING. |
+| Event | 8 `/events/<slug>` pages: `automotive-electronics-seminar`, `connexion`, `drone-workshop`, `innovatia`, `iota-bidwars`, `lord-of-the-ring`, `lord-of-the-rings`, `lord-of-the-rings-2025`, plus `/events` | `lord-of-the-rings` has only 80 characters of text and the same title as `lord-of-the-ring` (2026): possible legacy alias or duplicate. **Do not merge or drop it**; treat as a Redirect candidate only after an owner decides (question 11). Event dates and statuses are flagged as possibly stale: stay unknown until resolved. |
+| Person / Membership | `/team` and `/alumni` are People pages; many portrait files flagged "privacy and consent to be confirmed"; same-name entries must stay separate | Group list and duplicate candidates still PENDING. Portrait consent is a **public/private** decision before any portrait is a Public field (question 12). |
+| Milestone | `/timeline` page | Date precision per entry stays as in the source; PENDING. |
+| Redirect | Old-URL destinations are "to be recorded" for every migrated page; workshop Q&A (`/drone-workshop/qa-portal/`) is **excluded** (service and data kept) | Redirect records are created only for approved destinations. Q&A response is an orchestrator decision (question 6). |
+| Globals | `/home` and `/about` pages; official contact `iotajuofficial@gmail.com` listed as a manual check | Home/About fields stay PENDING Pritish; contact email stays one shared setting. |
+
 ## 9. Open questions and sign-off
 
 | # | Question | Who | Status |
@@ -170,6 +183,10 @@ Sent only after the write has committed. Payload:
 | 7 | Redirects: Editor draft + Admin publish, or Admin-only? | Orchestrator | open |
 | 8 | Who may publish; account-recovery email owner. | Orchestrator | open |
 | 9 | Event publication-event timing relative to commit. | Sourasish | open |
+| 10 | Is PR #5's `docs/source-inventory.md` the final M01, and what is the approved immutable source lock? | Shreyam / orchestrator | open |
+| 11 | Is `/events/lord-of-the-rings` (80 chars, same title as 2026) an alias, a duplicate or a real page? | Shreyam / orchestrator | open |
+| 12 | Which portraits may be public (privacy/consent), and are any same-name people the same person? | Ritendu with club leads | open |
+| 13 | Which of the 12 project pages is the AGV feature, and what is the card order? | Shreyam / orchestrator | open |
 
 | Reviewer | Section(s) | Signed off |
 |---|---|---|

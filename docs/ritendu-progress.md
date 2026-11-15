@@ -1,12 +1,12 @@
 # Ritendu workstream progress
 Remote: https://github.com/sarkarritendu-creator/iota-ju-next.git   Branch: ritendu/cms-b01-b02   Updated: 2026-11-15
 Last commit: (set after N0 commit)
-Status: STOPPED AT CHECKPOINT
+Status: IN PROGRESS
 
 ## Nodes
-N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U3 NOT RUN; U4 documented, concurrency test NOT RUN, rule NOT SAFE at Payload layer) | N2 IN PROGRESS (U1 DONE: existing PR #1 contract checked against handbook, DRAFT label, PENDING marks, sign-off table present; U2 PENDING; U3 PENDING) | N3 PENDING | N4 PENDING | N5 PENDING | N6 PENDING | N7 PENDING | N8 PENDING | N9 PENDING | N10 PENDING
+N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U3 NOT RUN; U4 documented, concurrency test NOT RUN, rule NOT SAFE at Payload layer) | N2 IN PROGRESS (U1 DONE: existing PR #1 contract checked against handbook, DRAFT label, PENDING marks, sign-off table present; U2 DONE (reconciled vs draft PR #5 inventory; nothing Confirmed, PENDING marks kept); U3 PENDING) | N3 PENDING | N4 PENDING | N5 PENDING | N6 PENDING | N7 PENDING | N8 PENDING | N9 PENDING | N10 PENDING
 
-## NEXT UNIT: N2-U2
+## NEXT UNIT: N2-U3
 
 ## Not run / unverified
 - Last-Admin atomic protection: policy doc'd (access-matrix.md section 7); NOT implemented at Payload layer; concurrency test written, NOT RUN
@@ -16,6 +16,7 @@ N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U
 - Policy unit tests run with an out-of-repo vitest (node_modules symlink, gitignored); no test setup is committed on main
 
 ## Open questions (owner)
+- Contract questions 10 to 13 added (final M01/source lock; lord-of-the-rings alias; portrait consent and same-name people; AGV and card order) : see docs/content-contract.md section 9
 - Redirects Admin-only (proposed) or draft/publish? : orchestrator
 - Editor media upload directly or pre-approved only? : Shreyam / orchestrator
 - Who is first Admin and who receives recovery email? : orchestrator
