@@ -91,7 +91,21 @@ Each case must be covered by a unit test on the policy now, and again as a **dir
 - Check drafts and user records from a signed-out client using direct API calls.
 - Confirm Payload Local API calls in public readers set `overrideAccess: false` (reviewed with Sourasish).
 
-## 7. Open points
+## 7. Last-Admin protection: policy and required integration (N1-U4)
+
+**Policy:** at least one active Admin must exist at all times. `canUpdateUser` / `canDeleteUser` in `src/access/policy.ts` enforce this from a caller-supplied `activeAdminCount`. That is only the decision logic.
+
+**Known limit (do not call this safe yet):** reading a count and then saving in a separate step is not race-safe. Two Admins demoting each other at the same moment can both see "2 active Admins" and both succeed, leaving none. `src/collections/Users.ts` currently passes no real count (placeholder), so **the last-Admin rule is NOT enforced at the Payload layer yet.**
+
+**Required step after P01 (to be verified against the version pinned by Sourasish):**
+1. Add `beforeChange` and `beforeDelete` hooks on `users` that run only when the target is an active Admin being demoted, deactivated or deleted.
+2. Inside those hooks, use the request's own transaction (`req.transaction`, pass `req` to every call) and first take a Postgres transaction-scoped advisory lock (e.g. `pg_advisory_xact_lock` with one fixed key for "admin set"), so concurrent Admin changes run one at a time.
+3. After the lock, count active Admins excluding the target (with `req`), call the policy with that count, and throw if it would reach zero. The lock releases when the transaction commits or rolls back.
+4. Add the concurrency integration test (two Admins demote each other with `Promise.all`; exactly one must fail), then mark this protected.
+
+Until step 4 passes, status = **NOT RUN / NOT SAFE**. Needs Sourasish (P01 and DB access) to confirm that hooks and `req.transaction` work with the pinned Payload and Postgres adapter.
+
+## 8. Open points
 
 - Whether Redirects stay Admin-only (proposed) or follow draft/publish (orchestrator).
 - Whether an Editor may upload Media directly or only attach pre-approved files (Shreyam / orchestrator).

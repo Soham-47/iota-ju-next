@@ -88,5 +88,24 @@ describe.skipIf(!enabled)('B02 permissions via the Payload Local API', () => {
 
   // Content-collection cases (publish/unpublish/delete, PERM-04..10, PERM-15) are added
   // with the collections in B03..B05, reusing these helpers.
-  it.todo('last active Admin cannot be demoted/deactivated/deleted under concurrent requests (PERM-16, N1-U4)')
+  // PERM-16 concurrency. Expected to FAIL until the atomic lock integration in
+  // docs/access-matrix.md section 7 exists. Do not mark the rule safe until it passes.
+  it('two Admins demoting each other at once leave at least one active Admin (PERM-16)', async () => {
+    const second = await payload.create({
+      collection: 'users', overrideAccess: true,
+      data: { email: 'admin2@test.local', password: 'Test-only-1!', displayName: 'admin2', role: 'admin', active: true },
+    })
+    try {
+      const results = await Promise.allSettled([
+        payload.update({ collection: 'users', id: second.id, data: { role: 'editor' }, ...as({ ...admin, collection: 'users' }) }),
+        payload.update({ collection: 'users', id: admin.id, data: { role: 'editor' }, ...as({ ...second, collection: 'users' }) }),
+      ])
+      const ok = results.filter((r) => r.status === 'fulfilled').length
+      expect(ok).toBeLessThanOrEqual(1)
+      const admins = await payload.find({ collection: 'users', where: { role: { equals: 'admin' }, active: { equals: true } }, overrideAccess: true })
+      expect(admins.totalDocs).toBeGreaterThanOrEqual(1)
+    } finally {
+      await payload.delete({ collection: 'users', id: second.id, overrideAccess: true }).catch(() => {})
+    }
+  })
 })
