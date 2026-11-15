@@ -1,12 +1,12 @@
 # Ritendu workstream progress
 Remote: https://github.com/sarkarritendu-creator/iota-ju-next.git   Branch: ritendu/cms-b01-b02   Updated: 2026-11-15
-Last commit: (set after N0 commit)
+Last commit: see `git log -1` (this line is not updated per commit)
 Status: STOPPED AT CHECKPOINT
 
 ## Nodes
-N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U3 NOT RUN; U4 documented, concurrency test NOT RUN, rule NOT SAFE at Payload layer) | N2 DONE (U1 DONE: existing PR #1 contract checked against handbook, DRAFT label, PENDING marks, sign-off table present; U2 DONE (reconciled vs draft PR #5 inventory; nothing Confirmed, PENDING marks kept); U3 DONE) | N3, N4, N5, N6 BLOCKED (no B01 sign-off; fields PENDING) | N7 IN PROGRESS (U1 DONE: src/hooks/redirectRules.ts + tests/redirect-rules.test.ts, 13 tests run and passing; Redirects.ts collection, Milestones, hook wiring PENDING sign-off/P01) | N8 BLOCKED | N9 PENDING | N10 PENDING
+N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U3 NOT RUN; U4 documented, concurrency test NOT RUN, rule NOT SAFE at Payload layer) | N2 DONE (U1 DONE: existing PR #1 contract checked against handbook, DRAFT label, PENDING marks, sign-off table present; U2 DONE (reconciled vs draft PR #5 inventory; nothing Confirmed, PENDING marks kept); U3 DONE) | N3, N4, N5, N6 BLOCKED (no B01 sign-off; fields PENDING) | N7 IN PROGRESS (U1 DONE: src/hooks/redirectRules.ts + tests/redirect-rules.test.ts, 13 tests run and passing; Redirects.ts collection, Milestones, hook wiring PENDING sign-off/P01) | N8 IN PROGRESS (U1 DONE: src/hooks/relationshipRules.ts + tests/relationships.test.ts, 18 tests run and passing; Payload hook wiring, nested-read integration tests PENDING P01 + sign-off) | N9 PENDING | N10 PENDING
 
-## NEXT UNIT: N8-U1 (field-independent relationship/deletion guard logic as pure functions + tests, same approach as redirectRules). Then N10 interim report. N3-N6 and Redirects/Milestones collections wait for B01 sign-off (docs/content-contract.md section 9)
+## NEXT UNIT: N10-U1 (interim final report: files changed, exact commands/results, NOT RUN list, open questions, requests, blockers; draft updated PR text). Then wait for B01 sign-off (docs/content-contract.md section 9) and P01 before N3-N6, Redirects/Milestones collections, hook wiring, N9.
 
 ## Not run / unverified
 - Redirect hook wiring into a Payload Redirects collection: not written (needs sign-off + P01). Pure logic IS tested (13 passing).

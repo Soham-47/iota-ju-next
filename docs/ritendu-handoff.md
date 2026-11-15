@@ -11,6 +11,7 @@ Branch: `ritendu/cms-b01-b02` · Updated: 15 November 2026 · Detailed status: [
 | B02 direct-API permission tests | `tests/permissions.test.ts` | Written, **not run** (skipped unless `PERMISSIONS_TEST=1` and an isolated DB) |
 | B01 content contract | `docs/content-contract.md` | **DRAFT**, awaiting reviewer sign-off |
 | B06b redirect validation rules | `src/hooks/redirectRules.ts`, `tests/redirect-rules.test.ts` | **Done, 13 tests run and pass** (not yet wired into a Payload collection) |
+| B07 relationship safety rules (publish-reference check, public media shaping, delete guard, page-refresh plan, visible hook failures) | `src/hooks/relationshipRules.ts`, `tests/relationships.test.ts` | **Done, 18 tests run and pass** (not yet wired into Payload hooks) |
 
 Editor rule: an Editor can change only their own `displayName` (explicit allowlist). Email, password, role, active status and any other field are denied.
 
