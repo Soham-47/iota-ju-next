@@ -29,6 +29,7 @@ N0 DONE | N1 DONE (U1 existing from PR #1; U2 policy tested, Users.ts NOT RUN; U
 - Shreyam: M01 source inventory before B01 PENDING fields can be resolved
 
 ## Notes / decisions
+- Team-facing summary and pending-from-others table: docs/ritendu-handoff.md (PR description draft kept outside the repo)
 - N2-U2 plan: reconcile every PENDING M01 field in docs/content-contract.md against Shreyam's docs/source-inventory.md (+ data/migration/source-manifest.json), available only on unmerged PR #5 (git ref pr5, fetch: git fetch https://github.com/Soham-47/iota-ju-next.git refs/pull/5/head:pr5). Treat it as DRAFT input, not agreed. Add open question #10: confirm PR #5 inventory is the final M01.
 - Local sandbox clone had no push access; work is saved as a git bundle + patches (see continuation prompt)
 - Branch based on main (d22b470); PR #1 files (policy.ts, access-policy test, access-matrix.md, content-contract.md) brought in from commit 0f19204 without its README/doc deletions (PR #1 was based on an older main)
