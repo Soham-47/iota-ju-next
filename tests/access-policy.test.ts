@@ -10,6 +10,7 @@ import {
   canUpdateContent,
   canUpdateUser,
   canWriteRedirect,
+  EDITOR_SELF_EDITABLE_USER_FIELDS,
   effectiveRole,
   isUnpublish,
   type Actor,
@@ -157,14 +158,38 @@ describe('user records', () => {
 
   const base: UserUpdate = {
     targetUserId: 'e1',
-    changedFields: ['name'],
+    changedFields: ['displayName'],
     targetCurrentRole: 'editor',
     targetCurrentActive: true,
     activeAdminCount: 2,
   }
 
-  it('lets an Editor update own non-privileged fields', () => {
+  it('lets an Editor change only their own display name (allowlist)', () => {
     expect(canUpdateUser(editor, base).allowed).toBe(true)
+  })
+  it('denies an Editor changing their own email (PERM-21)', () => {
+    const r = canUpdateUser(editor, { ...base, changedFields: ['email'] })
+    expect(r.allowed).toBe(false)
+  })
+  it('denies an Editor changing email together with the display name', () => {
+    const r = canUpdateUser(editor, { ...base, changedFields: ['displayName', 'email'] })
+    expect(r.allowed).toBe(false)
+  })
+  it('denies an Editor changing their password directly (recovery flow only)', () => {
+    const r = canUpdateUser(editor, { ...base, changedFields: ['password'] })
+    expect(r.allowed).toBe(false)
+  })
+  it('denies any field not on the allowlist, including future fields (PERM-22)', () => {
+    for (const f of ['bio', 'avatar', 'someFutureField', '__proto__']) {
+      expect(canUpdateUser(editor, { ...base, changedFields: [f] }).allowed).toBe(false)
+    }
+  })
+  it('treats newRole/newActive as a change even if changedFields omits them (PERM-23)', () => {
+    expect(canUpdateUser(editor, { ...base, newRole: 'admin' }).allowed).toBe(false)
+    expect(canUpdateUser(editor, { ...base, newActive: true }).allowed).toBe(false)
+  })
+  it('exposes the exact allowlist', () => {
+    expect([...EDITOR_SELF_EDITABLE_USER_FIELDS]).toEqual(['displayName'])
   })
   it('denies an Editor self-promoting (PERM-11)', () => {
     const r = canUpdateUser(editor, { ...base, changedFields: ['role'], newRole: 'admin' })

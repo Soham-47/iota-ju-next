@@ -37,7 +37,7 @@ Decisive rule: for Editors the **incoming** request must be an explicit draft sa
 
 | Collection / global | Anonymous | Editor | Admin |
 |---|---|---|---|
-| Users | no access | read **own** record; may change own name and password; **cannot** change `role` or `active` | full management |
+| Users | no access | read **own** record; may change **only their own display name** (explicit allowlist: `displayName`); **cannot** change email, password (recovery flow only), `role`, `active` or any other field | full management |
 | Redirects | no | *proposed:* no write (live routing) | create / update / delete |
 | Globals (Home, About, SiteSettings) | published values via readers | save drafts | publish |
 | Media | public delivery files only | upload as private; cannot approve for public | approve for public, revoke |
@@ -47,7 +47,7 @@ Media approval detail belongs to Shreyam's M02; this table records only what the
 ## 4. Account rules
 
 1. Only an Admin can create accounts or change `role` / `active`.
-2. An Editor can never change any `role` or `active` value, including their own.
+2. An Editor can change only their own `displayName`, using an explicit allowlist (not "everything except role/active"). Email, role, active status, password and any future field are denied. Passwords change only through the approved recovery flow.
 3. The last active Admin can never be demoted, deactivated or deleted, by anyone including themselves.
 4. First-admin bootstrap is private and limited to the chosen owner. It is a one-time procedure documented in `docs/operations.md`, not an open endpoint.
 5. Recovery (password reset) is configured only after the orchestrator assigns a club-owned email account.
@@ -78,6 +78,9 @@ Each case must be covered by a unit test on the policy now, and again as a **dir
 | PERM-17 | Inactive Editor / Admin attempts any write | denied |
 | PERM-18 | Unknown role string on a user | treated as no access |
 | PERM-19 | Editor edits a Redirect | denied (proposed) |
+| PERM-21 | Editor changes own email | denied (allowlist) |
+| PERM-22 | Editor changes a field not on the allowlist (incl. future fields, password) | denied |
+| PERM-23 | Editor request carries `role`/`active` value without naming the field | treated as a change, denied |
 | PERM-20 | Hiding a button is not a control | covered by the direct-API versions of all of the above |
 
 ## 6. Staging checks (after P01, B02 acceptance)

@@ -4,11 +4,12 @@ Last commit: (set after N0 commit)
 Status: IN PROGRESS
 
 ## Nodes
-N0 DONE | N1 IN PROGRESS | N2 PENDING | N3 PENDING | N4 PENDING | N5 PENDING | N6 PENDING | N7 PENDING | N8 PENDING | N9 PENDING | N10 PENDING
+N0 DONE | N1 IN PROGRESS (U1 DONE (existing from PR #1, verified), U2 DONE (policy tested; Users.ts NOT RUN), U3 PENDING, U4 PENDING) | N2 PENDING | N3 PENDING | N4 PENDING | N5 PENDING | N6 PENDING | N7 PENDING | N8 PENDING | N9 PENDING | N10 PENDING
 
-## NEXT UNIT: N1-U2
+## NEXT UNIT: N1-U3
 
 ## Not run / unverified
+- src/collections/Users.ts: written for Payload 3.x, never compiled or run (Payload not installed on this branch)
 - Payload-based checks and direct-API tests: NOT RUN, waiting for P01 (no app/Payload on main; PR #2 incomplete)
 - Policy unit tests run with an out-of-repo vitest (node_modules symlink, gitignored); no test setup is committed on main
 

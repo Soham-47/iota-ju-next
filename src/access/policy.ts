@@ -117,6 +117,15 @@ export function canReadUser(actor: Actor, targetUserId: string): AccessDecision 
 export const PRIVILEGED_USER_FIELDS = ['role', 'active'] as const
 export type PrivilegedUserField = (typeof PRIVILEGED_USER_FIELDS)[number]
 
+/**
+ * The ONLY user fields an Editor may change, and only on their own record.
+ * This is an explicit allowlist: any field not listed here is denied, including
+ * email, role, active, and fields added to the Users collection later.
+ * Passwords are NOT listed: they change only through the approved recovery flow.
+ * 'displayName' is the approved display-name field; Users.ts must use this exact name.
+ */
+export const EDITOR_SELF_EDITABLE_USER_FIELDS = ['displayName'] as const
+
 export type UserUpdate = {
   targetUserId: string
   /** Names of fields present in the incoming data. */
@@ -134,20 +143,31 @@ export type UserUpdate = {
 /**
  * Decide an update to a user record, field-aware.
  * - Admin: may change anything, but not in a way that leaves zero active Admins.
- * - Editor: may update only their own non-privileged fields (e.g. name, password).
+ * - Editor: may update only their own display name (explicit allowlist).
+ *
+ * NOTE (last-Admin): activeAdminCount is supplied by the caller. A count read
+ * followed by a separate save is NOT race-safe. The count and the write must run
+ * in one atomic Payload operation after P01 (see docs/access-matrix.md section 7).
  */
 export function canUpdateUser(actor: Actor, update: UserUpdate): AccessDecision {
   const role = effectiveRole(actor)
   if (!role) return deny('no active account')
 
-  const touchesPrivileged = update.changedFields.some((f) =>
-    (PRIVILEGED_USER_FIELDS as readonly string[]).includes(f),
-  )
+  // Defence in depth: a privileged value in newRole/newActive counts as a change
+  // even if the caller left the field name out of changedFields.
+  const changed = new Set(update.changedFields)
+  if (update.newRole !== undefined) changed.add('role')
+  if (update.newActive !== undefined) changed.add('active')
 
   if (role === 'editor') {
     if (update.targetUserId !== actor!.id) return deny('editors cannot edit other users')
-    if (touchesPrivileged) return deny('only Admins may change role or active status')
-    return allow('editor updates own profile')
+    const allowed = EDITOR_SELF_EDITABLE_USER_FIELDS as readonly string[]
+    const privileged = PRIVILEGED_USER_FIELDS as readonly string[]
+    for (const f of changed) {
+      if (privileged.includes(f)) return deny('only Admins may change role or active status')
+      if (!allowed.includes(f)) return deny(`editors may not change "${f}"; only their own display name`)
+    }
+    return allow('editor updates own display name')
   }
 
   // Admin: protect the last active Admin.
